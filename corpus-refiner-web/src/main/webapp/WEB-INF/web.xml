@@ -4,14 +4,24 @@
 
 <web-app>
 	<display-name>Corpus Refiner Web</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
 	<servlet>
-		<servlet-name>controller</servlet-name>
-		<servlet-class>
-			corpusrefiner.ControllerServlet
-        </servlet-class>
+		<servlet-name>Jersey Spring Web Application</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
 	</servlet>
+	
 	<servlet-mapping>
-		<servlet-name>controller</servlet-name>
-		<url-pattern>/controller</url-pattern>
+		<servlet-name>Jersey Spring Web Application</servlet-name>
+		<url-pattern>/rs/*</url-pattern>
 	</servlet-mapping>
 </web-app>
